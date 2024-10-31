@@ -46,8 +46,8 @@ def main():
             messagebox.showerror("Erro", "O email fornecido é inválido.")          
             return       
 
-        if len(senha) < 6:
-            messagebox.showerror("Erro", "A senha deve ter pelo menos 6 caracteres.")         
+        if len(senha) < 8:
+            messagebox.showerror("Erro", "A senha deve ter pelo menos 8 caracteres.")         
             return
         
         try:
@@ -344,9 +344,9 @@ def main():
                 janela_senha.deiconify()
                 return
             
-            if len(nova_senha) < 6:
+            if len(nova_senha) < 8:
                 janela_senha.withdraw()
-                messagebox.showerror("Erro", "A nova senha deve ter pelo menos 6 caracteres.")
+                messagebox.showerror("Erro", "A nova senha deve ter pelo menos 8 caracteres.")
                 janela_senha.deiconify()
                 return
             
@@ -377,6 +377,8 @@ def main():
                 if services.redefinir_senha(email, nova_senha):
                     janela_senha.withdraw()
                     messagebox.showinfo("Sucesso", "Senha redefinida com sucesso!")
+                    nova_senha_entry.delete(0, END)
+                    conf_nova_senha_entry.delete(0, END)
                     janela_senha.deiconify()
                     
                 else:
